@@ -35,4 +35,5 @@ Lab 3: [builds](labs/3-builds/)
 
 
 
-Download the slides at:
+Download the slides:  
+[Day 1](https://storage.googleapis.com/kistek-training/advanced-docker-day-1.pdf)
