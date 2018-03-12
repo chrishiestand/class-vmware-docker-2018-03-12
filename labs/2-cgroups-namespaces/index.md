@@ -110,4 +110,19 @@ If you want to delete the cgroup you can run
 sudo cgdelete memory:playground
 ```
 
+## Docker and CPU limits
+
+### How performant are these cpu bound processes?
+
+Try opening 2 shells and starting these commands at the same time. Does one finish notably faster?
+
+```bash
+docker run --cpu-shares=2 alpine time dd if=/dev/urandom of=/dev/null bs=1M count=2000
+```
+
+```bash
+docker run --cpu-shares=1024 alpine time dd if=/dev/urandom of=/dev/null bs=1M count=2000
+```
+
+
 credits: Much of this example taken from <https://jvns.ca/blog/2016/10/10/what-even-is-a-container/>
