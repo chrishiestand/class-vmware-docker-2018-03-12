@@ -13,10 +13,16 @@ Build a compose file for this guestbook application with 2 redis stores.
 ```
 guestbook:
     image: gcr.io/google-samples/gb-frontend:v4
+    ports:
+      - "80:80"
 redis-master:
     image: k8s.gcr.io/redis:e2e
+    ports:
+      - "6379:6379"
  redis-slave:
     image: gcr.io/google_samples/gb-redisslave:v1
+    ports:
+      - "6380:6379"
 ```
 
 docker-compose reference: <https://docs.docker.com/compose/compose-file/>
