@@ -29,7 +29,7 @@ SSH key link distributed in class.
 
 ### Course work
 
-Lab 1: [compose](labs/1-compose/)  
+Lab 1: [compose](labs/1-compose/) ([example-solution](labs/1-compose/example-docker-compose.yaml))  
 Lab 2: [cgroups-namespaces](labs/2-cgroups-namespaces/)  
 Lab 3: [builds](labs/3-builds/)
 
