@@ -74,6 +74,7 @@ Lab 2: [cgroups-namespaces](labs/2-cgroups-namespaces/)
 Lab 3: [builds](labs/3-builds/)  
 Lab 4: [security](labs/4-security/)  
 Lab 5: [networks](labs/5-networks/)  
+Lab 6: [api](labs/6-api/)  
 Lab 7: [orchestration](labs/7-orchestration/)  
 
 
