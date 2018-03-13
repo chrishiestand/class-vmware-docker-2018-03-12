@@ -2,7 +2,7 @@
 
 ## lab VMs
 <table>
-<tr><th>vm number</th><th>public ip</th><th>private ip</th></tr>
+<tr><th>vm number</th><th>private ip</th><th>public ip</th></tr>
 lab1 10.138.0.2 35.230.8.141
 <tr><td>lab2</td> <td>10.138.0.4</td> <td>35.230.97.35</td></tr>
 <tr><td>lab3</td> <td>10.138.0.6</td> <td>35.199.168.170</td></tr>
