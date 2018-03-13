@@ -78,4 +78,5 @@ Lab 7: [orchestration](labs/7-orchestration/)
 
 
 Download the slides:  
-[Day 1](https://storage.googleapis.com/kistek-training/advanced-docker-day-1.pdf)
+[Day 1](https://storage.googleapis.com/kistek-training/advanced-docker-day-1.pdf)  
+[Day 2](https://storage.googleapis.com/kistek-training/advanced-docker-day-2.pdf)
