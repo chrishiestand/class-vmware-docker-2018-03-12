@@ -110,6 +110,72 @@ If you want to delete the cgroup you can run
 sudo cgdelete memory:playground
 ```
 
+## Explore the cgroup namespace
+
+In addition to cgcreate, we can create cgroups by simply creating a folder (because in linux almost everything is a file).
+
+In this example we'll be working in the freezer subsystem, which is used to schedule processes on computer. But we won't actually be using the freezer subsystem, other than for the cgroups.
+
+```bash
+#Create a cgroup
+mkdir -p /sys/fs/cgroup/freezer/mycgroup
+```
+
+Note that your new cgroup is automatically populated by the kernel
+```bash
+ls -la /sys/fs/cgroup/freezer/mycgroup
+```
+
+Get your shell PID
+```bash
+echo $$
+# 942
+```
+
+Add your shell to the cgroup
+```bash
+echo 942 > /sys/fs/cgroup/freezer/mycgroup/cgroup.procs
+```
+
+Verify your shell is now in the cgroup
+```bash
+grep freezer /proc/self/cgroup
+# 6:freezer:/mycgroup
+```
+
+Now we'll use unshare again to create a new process running in a new cgroup and mount namespace
+
+```bash
+unshare -C bash
+```
+
+We are now running bash inside of the new namespace. Let's take a look at our freezer cgroup now:
+
+```bash
+grep freezer /proc/self/cgroup
+# 6:freezer:/
+```
+
+Note that you don't see `/mycgroup` because the parent has made the cgroup relative to its parent, which is `/mycgroup`. In other words, this process is shown to be the root `/` of the parent `/mycgroup`.
+
+Now get the PID of your namespaced shell and keep it running.
+```bash
+echo $$
+# 1032
+```
+
+Now from your new shell in just the default namespaces, run this setting the correct PID from above:
+```bash
+grep freezer /proc/1032/cgroup
+# 6:freezer:/mycgroup
+```
+
+This verifies that your namespaced process is in the cgroup "mycgroup", but your namespaced process can't tell from looking at its cgroups.
+
+### Cgroup Namespace Exercise
+
+How can the namespaced shell above figure what cgroup it is in? (hint: despite the cgroup namespace with relative path, there is still at least one way)
+
 ## Docker and CPU limits
 
 ### How performant are these cpu bound processes?
@@ -125,4 +191,4 @@ docker run --cpu-shares=1024 alpine time dd if=/dev/urandom of=/dev/null bs=1M c
 ```
 
 
-credits: Much of this example taken from <https://jvns.ca/blog/2016/10/10/what-even-is-a-container/>
+credits: Inspiration and some examples taken from <https://jvns.ca/blog/2016/10/10/what-even-is-a-container/>
