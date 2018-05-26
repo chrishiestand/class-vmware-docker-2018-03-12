@@ -17,7 +17,7 @@ Download: [4.Dockerfile](4.Dockerfile)
 ### Problem 5
 This container isn't just larger than it needs to be, but a /var/lib file raised a flag with our security scanner. Think you might be able to reduce the footprint *and* pass the security scan?
 
-You will to clone the git repository with this command on your development box:
+You will need to clone the git repository with this command on your development box:
 ```bash
 git clone https://github.com/chrishiestand/docker-go-hello-world.git
 ```
