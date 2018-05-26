@@ -469,19 +469,6 @@ docker node inspect --pretty lab2
 * when you set another node to Drain availability
 * when a task fails on another active node
 
-
-
----
-TODO
-Stop the tutorial after you have created the swarm mode routing mesh with this command (note the port should be 80 for our setup):  
-docker service create \
-  --name my-web \
-  --publish published=80,target=80 \
-  --replicas 2 \
-  nginx
-
----
-
 ## Use Swarm Mode Routing Mesh
 
 Docker Engine swarm mode makes it easy to publish ports for services to make them available to resources outside the swarm. All nodes participate in an ingress routing mesh. The routing mesh enables each node in the swarm to accept connections on published ports for any service running in the swarm, even if there’s no task running on the node. The routing mesh routes all incoming requests to published ports on available nodes to an active container.
